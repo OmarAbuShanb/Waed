@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">حرية</string>
+    <string name="about_app">عن التطبيق</string>
+    <string name="prisoner_books">كتب الأسرى</string>
+    <string name="prisoner_cards">بطاقات الأسرى</string>
+    <string name="prisoner_details">تفاصيل الأسير</string>
+    <string name="prisoner_posters">تصاميم عن الأسرى</string>
+    <string name="home">الرئيسية</string>
+    <string name="details">التفاصيل</string>
+    <string name="prisoner_statistics">إحصائيات الأسرى</string>
+    <string name="martyrs_of_the_captive_movement">شهداء الحركة الأسيرة</string>
+    <string name="child_captive">أسير طفل</string>
+    <string name="girl_prisoner_inside_prisons">أسيرة داخل السجون</string>
+    <string name="sick_prisoner">أسير مريض</string>
+    <string name="prisoner_he_spent_more_than_30_scholars">أسيراً امضى اكثر من 30 عاماً</string>
+    <string name="prisoner_sentenced_to_life">أسير محكوم مؤبد مدى الحياة</string>
+    <string name="prisoner_inside_prisons">أسيراً داخل السجون</string>
+    <string name="administrative_detention">معتقل إداري</string>
+    <string name="technical_support">الدعم الفني</string>
+    <string name="tell_us_your_problem">أخبرنا بمشكلتك</string>
+    <string name="what_problem_are_you_facing">ما المشكلة التي تواجهها؟</string>
+    <string name="send">إرسال</string>
+    <string name="about_us">جمعية مدنية أنشأت عام 2006 للدفاع عن قضايا الأسرى وذويهم.</string>
+    <string name="urgent_now">عاجل الآن</string>
+    <string name="today_s_news">أخبار اليوم</string>
+    <string name="notifications">الإشعارات</string>
+    <string name="search">البحث</string>
+    <string name="connect_with_us">تواصل معنا</string>
+    <string name="more">المزيد</string>
+    <string name="what_are_you_looking_for">عن ماذا تبحث؟</string>
+    <string name="notifications_are_enabled">تم تفعيل الاشعارات</string>
+    <string name="notifications_are_disabled">تم تعطيل الاشعارات</string>
+    <string name="name">الاسم :</string>
+    <string name="date_of_arrest">تاريخ الإعتقال :</string>
+    <string name="date_of_arrest_view" tools:ignore="ExtraTranslation">30/12/2019</string>
+    <string name="name_view" tools:ignore="ExtraTranslation">باسل السويركي</string>
+    <string name="judgment">الحكم :</string>
+    <string name="judgment_view" tools:ignore="ExtraTranslation">مؤبد</string>
+    <string name="living">مكان السكن :</string>
+    <string name="living_view" tools:ignore="ExtraTranslation">غزة</string>
+    <string name="home_page">الرئيسية</string>
+    <string name="search_page">البحث</string>
+    <string name="contact_us_page">تواصل معنا</string>
+    <string name="more_page">المزيد</string>
+</resources>
