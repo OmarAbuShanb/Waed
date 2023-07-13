@@ -1,4 +1,4 @@
-package waed.dev.ps.Screens;
+package waed.dev.ps.Screens.activities;
 
 import android.os.Bundle;
 
@@ -13,7 +13,7 @@ import waed.dev.ps.R;
 import waed.dev.ps.databinding.ActivityBooksBinding;
 
 public class BooksActivity extends AppCompatActivity {
-    ActivityBooksBinding binding;
+    private ActivityBooksBinding binding;
 
     BooksAdapter booksAdapter;
 

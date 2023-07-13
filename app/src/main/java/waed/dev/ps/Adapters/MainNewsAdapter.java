@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import waed.dev.ps.Models.News;
-import waed.dev.ps.Screens.NewsDetails;
+import waed.dev.ps.Screens.activities.NewsDetails;
 import waed.dev.ps.databinding.NewsItemBinding;
 
 public class MainNewsAdapter extends RecyclerView.Adapter<MainNewsAdapter.newsHolder> {

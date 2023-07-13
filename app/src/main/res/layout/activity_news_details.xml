@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Screens.NewsDetails">
+    tools:context=".Screens.activities.NewsDetails">
 
     <TextView
         android:id="@+id/textView2"
@@ -23,7 +23,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        tools:context=".Screens.NewsDetails"
+        tools:context=".Screens.activities.NewsDetails"
         tools:ignore="ScrollViewCount">
 
         <androidx.constraintlayout.widget.ConstraintLayout

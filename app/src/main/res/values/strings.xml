@@ -11,7 +11,7 @@
     <string name="child_captive">Child captive</string>
     <string name="girl_prisoner_inside_prisons">Girl Prisoner inside prisons</string>
     <string name="sick_prisoner">Sick prisoner</string>
-    <string name="prisoner_he_spent_more_than_30_scholars">Prisoner, he spent more than 30 scholarsً</string>
+    <string name="prisoner_he_spent_more_than_30_scholars">Prisoner, he spent moreFragment than 30 scholarsً</string>
     <string name="prisoner_sentenced_to_life">Prisoner sentenced to life</string>
     <string name="prisoner_inside_prisons">Prisoners inside prisons</string>
     <string name="administrative_detention">Administrative detention</string>
@@ -23,10 +23,10 @@
     <string name="urgent_now">Urgent now</string>
     <string name="today_s_news">Today\'s news</string>
     <string name="notifications">Notifications</string>
-    <string name="home">Home</string>
-    <string name="search">Search</string>
+    <string name="homeFragment">Home</string>
+    <string name="searchFragment">Search</string>
     <string name="connect_with_us">Connect with us</string>
-    <string name="more">More</string>
+    <string name="moreFragment">More</string>
     <string name="what_are_you_looking_for">What are you looking for?</string>
     <string name="notifications_are_enabled">Notifications are enabled</string>
     <string name="notifications_are_disabled">Notifications are disabled</string>

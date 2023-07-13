@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import waed.dev.ps.Models.PrisonerCard;
-import waed.dev.ps.Screens.PrisonerDetailsActivity;
+import waed.dev.ps.Screens.activities.PrisonerDetailsActivity;
 import waed.dev.ps.databinding.PrisonerCardItemBinding;
 
 public class PrisonersCardsAdapter extends RecyclerView.Adapter<PrisonersCardsAdapter.viewHolder> {

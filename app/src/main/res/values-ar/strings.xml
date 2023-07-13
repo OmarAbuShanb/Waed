@@ -6,7 +6,7 @@
     <string name="prisoner_cards">بطاقات الأسرى</string>
     <string name="prisoner_details">تفاصيل الأسير</string>
     <string name="prisoner_posters">تصاميم عن الأسرى</string>
-    <string name="home">الرئيسية</string>
+    <string name="homeFragment">الرئيسية</string>
     <string name="details">التفاصيل</string>
     <string name="prisoner_statistics">إحصائيات الأسرى</string>
     <string name="martyrs_of_the_captive_movement">شهداء الحركة الأسيرة</string>
@@ -25,9 +25,9 @@
     <string name="urgent_now">عاجل الآن</string>
     <string name="today_s_news">أخبار اليوم</string>
     <string name="notifications">الإشعارات</string>
-    <string name="search">البحث</string>
+    <string name="searchFragment">البحث</string>
     <string name="connect_with_us">تواصل معنا</string>
-    <string name="more">المزيد</string>
+    <string name="moreFragment">المزيد</string>
     <string name="what_are_you_looking_for">عن ماذا تبحث؟</string>
     <string name="notifications_are_enabled">تم تفعيل الاشعارات</string>
     <string name="notifications_are_disabled">تم تعطيل الاشعارات</string>

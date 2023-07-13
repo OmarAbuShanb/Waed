@@ -1,4 +1,4 @@
-package waed.dev.ps.Screens;
+package waed.dev.ps.Screens.activities;
 
 import android.os.Bundle;
 
@@ -13,8 +13,8 @@ import waed.dev.ps.R;
 import waed.dev.ps.databinding.ActivityCardsBinding;
 
 public class CardsActivity extends AppCompatActivity {
-    ActivityCardsBinding binding;
-    PrisonersCardsAdapter adapter;
+    private ActivityCardsBinding binding;
+    private PrisonersCardsAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

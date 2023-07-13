@@ -17,35 +17,35 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".Screens.PrisonerDetailsActivity"
+            android:name=".Screens.activities.PrisonerDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".Screens.PdfActivity"
+            android:name=".Screens.activities.PdfActivity"
             android:configChanges="orientation"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".Screens.Support"
+            android:name=".Screens.activities.SupportActivity"
             android:exported="false" />
         <activity
-            android:name=".Screens.AboutUs"
+            android:name=".Screens.fragments.AboutUsFragment"
             android:exported="false" />
         <activity
-            android:name=".Screens.DesignsActivity"
+            android:name=".Screens.activities.DesignsActivity"
             android:exported="false"
             android:theme="@style/Theme.Waed.Posters" />
         <activity
-            android:name=".Screens.CardsActivity"
+            android:name=".Screens.activities.CardsActivity"
             android:exported="false" />
         <activity
-            android:name=".Screens.BooksActivity"
+            android:name=".Screens.activities.BooksActivity"
             android:exported="false" />
         <activity
-            android:name=".Screens.StatisticsActivity"
+            android:name=".Screens.activities.StatisticsActivity"
             android:exported="false" />
         <activity
-            android:name=".Screens.NewsDetails"
+            android:name=".Screens.activities.NewsDetails"
             android:exported="false" />
 
         <activity

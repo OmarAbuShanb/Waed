@@ -1,4 +1,4 @@
-package waed.dev.ps.Screens;
+package waed.dev.ps.Screens.activities;
 
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +14,7 @@ import waed.dev.ps.Utils.RotationPageTransformer;
 import waed.dev.ps.databinding.ActivityDesignsBinding;
 
 public class DesignsActivity extends AppCompatActivity {
-    ActivityDesignsBinding binding;
+    private ActivityDesignsBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

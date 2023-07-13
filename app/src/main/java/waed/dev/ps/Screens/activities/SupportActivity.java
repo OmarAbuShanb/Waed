@@ -1,4 +1,4 @@
-package waed.dev.ps.Screens;
+package waed.dev.ps.Screens.activities;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -9,15 +9,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import waed.dev.ps.databinding.ActivitySupportBinding;
 
-public class Support extends AppCompatActivity {
-    ActivitySupportBinding binding;
+public class SupportActivity extends AppCompatActivity {
+    private ActivitySupportBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivitySupportBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        setupListeners();
+    }
+    private void setupListeners(){
         binding.buttonSend.setOnClickListener(v -> {
             String problem = binding.problemInput.getText().toString().trim();
             if (!problem.isEmpty()) {

@@ -1,4 +1,4 @@
-package waed.dev.ps.Screens;
+package waed.dev.ps.Screens.activities;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import waed.dev.ps.databinding.ActivityPdfBinding;
 
 public class PdfActivity extends AppCompatActivity {
-    ActivityPdfBinding binding;
+    private ActivityPdfBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

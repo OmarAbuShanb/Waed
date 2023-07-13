@@ -1,4 +1,4 @@
-package waed.dev.ps.Screens;
+package waed.dev.ps.Screens.activities;
 
 import android.os.Bundle;
 
@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import waed.dev.ps.databinding.ActivityNewsDetailsBinding;
 
 public class NewsDetails extends AppCompatActivity {
-    ActivityNewsDetailsBinding binding;
+    private ActivityNewsDetailsBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

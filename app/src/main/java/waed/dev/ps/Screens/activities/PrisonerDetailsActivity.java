@@ -1,4 +1,4 @@
-package waed.dev.ps.Screens;
+package waed.dev.ps.Screens.activities;
 
 import android.os.Bundle;
 
@@ -8,7 +8,7 @@ import waed.dev.ps.databinding.ActivityPrisonerDetailsBinding;
 
 public class PrisonerDetailsActivity extends AppCompatActivity {
 
-    ActivityPrisonerDetailsBinding binding;
+    private ActivityPrisonerDetailsBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

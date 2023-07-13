@@ -9,16 +9,16 @@ import androidx.fragment.app.Fragment;
 
 import com.google.firebase.messaging.FirebaseMessaging;
 
-import waed.dev.ps.Screens.Contact;
-import waed.dev.ps.Screens.Home;
-import waed.dev.ps.Screens.More;
-import waed.dev.ps.Screens.Search;
+import waed.dev.ps.Screens.fragments.ContactFragment;
+import waed.dev.ps.Screens.fragments.HomeFragment;
+import waed.dev.ps.Screens.fragments.MoreFragment;
+import waed.dev.ps.Screens.fragments.SearchFragment;
 import waed.dev.ps.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
-    ActivityMainBinding binding;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,23 +44,23 @@ public class MainActivity extends AppCompatActivity {
                 .findItem(R.id.nav_home)
                 .setChecked(true);
 
-        Home home = new Home();
-        Search search = new Search();
-        Contact contact = new Contact();
-        More more = new More();
+        HomeFragment homeFragment = new HomeFragment();
+        SearchFragment searchFragment = new SearchFragment();
+        ContactFragment contactFragment = new ContactFragment();
+        MoreFragment moreFragment = new MoreFragment();
 
-        sitFragment(home, R.string.home);
+        sitFragment(homeFragment, R.string.homeFragment);
 
         binding.bottomVanView.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.nav_home) {
-                sitFragment(home, R.string.home);
+                sitFragment(homeFragment, R.string.homeFragment);
             } else if (item.getItemId() == R.id.nav_search) {
-                sitFragment(search, R.string.search);
+                sitFragment(searchFragment, R.string.searchFragment);
             } else if (item.getItemId() == R.id.nav_contact) {
-                sitFragment(contact, R.string.connect_with_us);
+                sitFragment(contactFragment, R.string.connect_with_us);
             } else {
                 // item.getItemId() == R.id.nav_more
-                sitFragment(more, R.string.more);
+                sitFragment(moreFragment, R.string.moreFragment);
             }
             return true;
         });

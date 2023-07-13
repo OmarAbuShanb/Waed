@@ -1,4 +1,4 @@
-package waed.dev.ps.Screens;
+package waed.dev.ps.Screens.activities;
 
 import android.os.Bundle;
 
@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import waed.dev.ps.databinding.ActivityStatisticsBinding;
 
 public class StatisticsActivity extends AppCompatActivity {
-    ActivityStatisticsBinding binding;
+    private ActivityStatisticsBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

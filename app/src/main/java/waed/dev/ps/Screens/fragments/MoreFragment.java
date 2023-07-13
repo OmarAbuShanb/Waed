@@ -1,4 +1,4 @@
-package waed.dev.ps.Screens;
+package waed.dev.ps.Screens.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,19 +12,26 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import waed.dev.ps.R;
+import waed.dev.ps.Screens.activities.SupportActivity;
 import waed.dev.ps.databinding.FragmentMoreBinding;
 
-public class More extends Fragment {
-    FragmentMoreBinding binding;
-
-    public More() {
-    }
+public class MoreFragment extends Fragment {
+    private FragmentMoreBinding binding;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentMoreBinding.inflate(getLayoutInflater());
+        return binding.getRoot();
+    }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        setupListeners();
+    }
+
+    private void setupListeners() {
         binding.notifications.setOnClickListener(view -> {
             boolean isChecked = binding.switchNotifications.isChecked();
             binding.switchNotifications.setChecked(!isChecked);
@@ -39,13 +46,11 @@ public class More extends Fragment {
         });
 
         binding.support.setOnClickListener(view -> {
-            startActivity(new Intent(getActivity(), Support.class));
+            startActivity(new Intent(getActivity(), SupportActivity.class));
         });
 
         binding.aboutUs.setOnClickListener(view -> {
-            startActivity(new Intent(getActivity(), AboutUs.class));
+            startActivity(new Intent(getActivity(), AboutUsFragment.class));
         });
-
-        return binding.getRoot();
     }
 }
