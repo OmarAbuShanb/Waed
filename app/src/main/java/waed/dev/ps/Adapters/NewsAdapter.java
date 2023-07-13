@@ -18,11 +18,19 @@ import waed.dev.ps.Models.News;
 import waed.dev.ps.Screens.activities.NewsDetails;
 import waed.dev.ps.databinding.NewsItemBinding;
 
-public class MainNewsAdapter extends RecyclerView.Adapter<MainNewsAdapter.newsHolder> {
-    ArrayList<News> news;
+public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.newsHolder> {
+    private ArrayList<News> news;
 
-    public MainNewsAdapter(ArrayList<News> news) {
+    public NewsAdapter(ArrayList<News> news) {
         this.news = news;
+    }
+
+    /**
+     * This is used when the data comes from the server initially you should give the initial adapter an empty array
+     * */
+    public void setNews(ArrayList<News> news) {
+        this.news = news;
+        notifyItemInserted(news.size()); // todo check this out.
     }
 
     @NonNull
@@ -58,10 +66,7 @@ public class MainNewsAdapter extends RecyclerView.Adapter<MainNewsAdapter.newsHo
             binding.newsImage.setImageResource(model.getImageUrl());
 
             binding.newsCard.setOnClickListener(v -> {
-                Intent details = new Intent(context, NewsDetails.class);
-                details.putExtra("news_image", model.getImageUrl());
-                details.putExtra("news_title", model.getTitle());
-                details.putExtra("news_details", model.getDetails());
+                Intent details = setupIntent(model);
 
                 Pair[] pairs = new Pair[1];
                 pairs[0] = new Pair<>(v, ViewCompat.getTransitionName(v));
@@ -69,6 +74,15 @@ public class MainNewsAdapter extends RecyclerView.Adapter<MainNewsAdapter.newsHo
                         ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context, pairs);
                 context.startActivity(details, optionsCompat.toBundle());
             });
+        }
+
+        @NonNull
+        private Intent setupIntent(News model) {
+            Intent details = new Intent(context, NewsDetails.class);
+            details.putExtra("news_image", model.getImageUrl());
+            details.putExtra("news_title", model.getTitle());
+            details.putExtra("news_details", model.getDetails());
+            return details;
         }
     }
 }
