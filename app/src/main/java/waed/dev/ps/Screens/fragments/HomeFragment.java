@@ -42,6 +42,12 @@ public class HomeFragment extends Fragment implements NewsAdapter.NewsListListen
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        binding.newsShimmerView.startShimmer();
+    }
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -73,9 +79,13 @@ public class HomeFragment extends Fragment implements NewsAdapter.NewsListListen
 
     private void getNews() {
         binding.progressNews.setVisibility(View.VISIBLE);
+        //.. following the MVC Concept by fetching the data within the controller
         firebaseController.getNews(new FirebaseController.GetNewsCallback() {
             @Override
             public void onSuccess(ArrayList<News> news) {
+                // remove the shimmer
+                removeShimmer();
+                // progress
                 binding.progressNews.setVisibility(View.GONE);
                 updateNewsAdapter(news);
             }
@@ -85,6 +95,11 @@ public class HomeFragment extends Fragment implements NewsAdapter.NewsListListen
 
             }
         });
+    }
+
+    private void removeShimmer() {
+        binding.newsShimmerView.stopShimmer();
+        binding.newsShimmerView.setVisibility(View.GONE);
     }
 
     private void setupNewsAdapter() {

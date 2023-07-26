@@ -38,7 +38,7 @@
         android:paddingHorizontal="@dimen/_10sdp"
         android:scrollHorizontally="true"
         android:singleLine="true"
-        android:text="الأسير المريض وليد دقة لا يزال يرقد بحالة صحية صعبة جدا فيما يعرف بعيادة سجن الرملة والاحتلال رفض كل الجهود لإطلاق سراحه ليقضي أيامه الأخيرة خارج السجن."
+        tools:text="الأسير المريض وليد دقة لا يزال يرقد بحالة صحية صعبة جدا فيما يعرف بعيادة سجن الرملة والاحتلال رفض كل الجهود لإطلاق سراحه ليقضي أيامه الأخيرة خارج السجن."
         android:textColor="@color/white"
         android:textSize="@dimen/_15ssp" />
 
@@ -76,14 +76,46 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv2" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/newsRecyclerView"
+            <!--NewsContainer-->
+            <LinearLayout
+                android:id="@+id/newsRecyclerViewContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv2" />
+                app:layout_constraintTop_toBottomOf="@+id/tv2">
+                <!--Shimmer-->
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/newsShimmerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <!--FakeRecyclerJob-->
+                    <HorizontalScrollView
+                        android:contentDescription="@string/fake_recycler_job"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <!--ScrollViewSingleChild-->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <!--Actual-->
+                            <include layout="@layout/placeholder_news_item" />
+
+                            <include layout="@layout/placeholder_news_item" />
+
+                            <include layout="@layout/placeholder_news_item" />
+                        </LinearLayout>
+                    </HorizontalScrollView>
+                </com.facebook.shimmer.ShimmerFrameLayout>
+                <!--ActualDataHolder-->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/newsRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
 
             <com.google.android.material.progressindicator.CircularProgressIndicator
                 android:id="@+id/progressNews"
@@ -91,10 +123,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="@+id/newsRecyclerView"
-                app:layout_constraintEnd_toEndOf="@+id/newsRecyclerView"
-                app:layout_constraintStart_toStartOf="@+id/newsRecyclerView"
-                app:layout_constraintTop_toTopOf="@+id/newsRecyclerView" />
+                app:layout_constraintBottom_toBottomOf="@+id/newsRecyclerViewContainer"
+                app:layout_constraintEnd_toEndOf="@+id/newsRecyclerViewContainer"
+                app:layout_constraintStart_toStartOf="@+id/newsRecyclerViewContainer"
+                app:layout_constraintTop_toTopOf="@+id/newsRecyclerViewContainer" />
 
 
             <LinearLayout
@@ -106,7 +138,7 @@
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/newsRecyclerView">
+                app:layout_constraintTop_toBottomOf="@+id/newsRecyclerViewContainer">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/statisticsCard"
@@ -128,7 +160,8 @@
                             android:layout_height="@dimen/_78sdp"
                             android:contentDescription="@null"
                             android:scaleType="fitCenter"
-                            android:src="@drawable/statistics_card" />
+                            android:src="@drawable/statistics_card"
+                            tools:ignore="ImageContrastCheck" />
 
                         <TextView
                             android:layout_width="wrap_content"

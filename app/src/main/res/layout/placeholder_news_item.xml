@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_8sdp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/buNewsCard"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_160sdp"
+        android:transitionName="newsCard"
+        app:cardCornerRadius="@dimen/_20sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <View
+                android:id="@+id/ivNews"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/place_holder_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient_alpha_black"
+                app:layout_constraintBottom_toBottomOf="@id/ivNews"
+                app:layout_constraintEnd_toEndOf="@id/ivNews"
+                app:layout_constraintStart_toStartOf="@id/ivNews"
+                app:layout_constraintTop_toTopOf="@id/ivNews" />
+
+            <View
+                android:id="@+id/newsTitle"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="#80C8C8C8"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                app:layout_constraintBottom_toBottomOf="@+id/ivNews"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -44,4 +44,5 @@
     <string name="aboutAppText">Work to support the issue of male and female prisoners in the prisons of the Israeli occupation in all fields and at all local, Arab and international levels by working hard and distinguished in order to highlight the issue of the male and female prisoners and their suffering caused by the darkness of the cells in a framework of transparency</string>
     <string name="prisoners">Prisoners</string>
     <string name="books">Books</string>
+    <string name="fake_recycler_job" translatable="false">FakeRecyclerJob</string>
 </resources>

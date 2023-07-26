@@ -84,4 +84,7 @@ dependencies {
     def nav_version = "2.6.0"
     implementation("androidx.navigation:navigation-fragment:$nav_version")
     implementation("androidx.navigation:navigation-ui:$nav_version")
+
+    // FacebookShimmer For UI
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
 }
