@@ -9,14 +9,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import waed.dev.ps.Models.Poster;
+import waed.dev.ps.Utils.UtilsGeneral;
 import waed.dev.ps.databinding.ItemPosterBinding;
 
 
-public class PostersAdapter extends RecyclerView.Adapter<PostersAdapter.PosterViewHolder> {
-    final ArrayList<Integer> postersImage;
+public class PrisonerPostersAdapter extends RecyclerView.Adapter<PrisonerPostersAdapter.PosterViewHolder> {
+    private ArrayList<Poster> posters;
 
-    public PostersAdapter(ArrayList<Integer> postersImage) {
-        this.postersImage = postersImage;
+    public PrisonerPostersAdapter(ArrayList<Poster> posters) {
+        this.posters = posters;
+    }
+
+    public void setPosters(ArrayList<Poster> posters) {
+        this.posters = posters;
+        notifyItemRangeInserted(0, posters.size());
     }
 
     @NonNull
@@ -29,12 +36,13 @@ public class PostersAdapter extends RecyclerView.Adapter<PostersAdapter.PosterVi
 
     @Override
     public void onBindViewHolder(@NonNull PosterViewHolder holder, int position) {
-        holder.bind(postersImage.get(position));
+        Poster poster = posters.get(position);
+        holder.bind(poster);
     }
 
     @Override
     public int getItemCount() {
-        return postersImage.size();
+        return posters.size();
     }
 
     static class PosterViewHolder extends RecyclerView.ViewHolder {
@@ -47,8 +55,11 @@ public class PostersAdapter extends RecyclerView.Adapter<PostersAdapter.PosterVi
             context = binding.getRoot().getContext();
         }
 
-        public void bind(Integer integer) {
-            binding.ivPoster.setImageResource(integer);
+        public void bind(Poster poster) {
+            UtilsGeneral.getInstance()
+                    .loadImage(context, poster.getImageUrl())
+                    .fitCenter()
+                    .into(binding.ivPoster);
         }
     }
 }

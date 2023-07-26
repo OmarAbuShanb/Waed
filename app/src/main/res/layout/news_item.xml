@@ -7,9 +7,9 @@
     android:padding="@dimen/_8sdp">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/newsCard"
-        android:layout_width="@dimen/_233sdp"
-        android:layout_height="250dp"
+        android:id="@+id/buNewsCard"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_160sdp"
         android:transitionName="newsCard"
         app:cardCornerRadius="@dimen/_20sdp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,7 +21,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/newsImage"
+                android:id="@+id/ivNews"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:contentDescription="@null"
@@ -33,13 +33,13 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:background="@drawable/gradient_alpha_black"
-                app:layout_constraintBottom_toBottomOf="@id/newsImage"
-                app:layout_constraintEnd_toEndOf="@id/newsImage"
-                app:layout_constraintStart_toStartOf="@id/newsImage"
-                app:layout_constraintTop_toTopOf="@id/newsImage" />
+                app:layout_constraintBottom_toBottomOf="@id/ivNews"
+                app:layout_constraintEnd_toEndOf="@id/ivNews"
+                app:layout_constraintStart_toStartOf="@id/ivNews"
+                app:layout_constraintTop_toTopOf="@id/ivNews" />
 
             <TextView
                 android:id="@+id/newsTitle"
@@ -54,7 +54,7 @@
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="@dimen/_14ssp"
-                app:layout_constraintBottom_toBottomOf="@+id/newsImage"
+                app:layout_constraintBottom_toBottomOf="@+id/ivNews"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:ignore="RtlSymmetry" />

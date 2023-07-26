@@ -43,4 +43,7 @@
     <string name="search_page">البحث</string>
     <string name="contact_us_page">تواصل معنا</string>
     <string name="more_page">المزيد</string>
+    <string name="aboutAppText">العمل من أجل نصرة قضية الأسرى والأسيرات فى سجون الاحتلال الإسرائيلى فى كافة الميادين وعلى كافة المستويات المحلية و العربية والدولية بالعمل الجاد والمتميز بغية إبراز قضية الأسير ومعاناته التى تسببتها ظلمة الزنازين فى إطار من الشفافية</string>
+    <string name="prisoners">الأسرى</string>
+    <string name="books">الكتب</string>
 </resources>

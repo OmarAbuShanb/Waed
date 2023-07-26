@@ -25,7 +25,9 @@ public class FirebaseInstanceIDService extends FirebaseMessagingService {
         String title = remoteMessage.getData().get("title");
         String details = remoteMessage.getData().get("details");
 
-        UtilsNotifications.setUpNotification(getApplicationContext(), senderId, title, details);
+        UtilsNotifications.setUpNotification(
+                getApplicationContext(), senderId, title, details
+        );
     }
 
     @Override

@@ -38,7 +38,10 @@ public class MainActivity extends AppCompatActivity {
                         msg = "Failed";
                     }
                     Log.e(TAG, "onCreate: " + msg);
-                });
+                })
+                .addOnFailureListener(e ->
+                        Log.e(TAG, "onCreate: " + e.getMessage())
+                );
 
         binding.bottomVanView.getMenu()
                 .findItem(R.id.nav_home)

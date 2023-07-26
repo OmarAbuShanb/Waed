@@ -1,20 +1,26 @@
 package waed.dev.ps.Screens.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import java.util.ArrayList;
 
-import waed.dev.ps.Adapters.PrisonersCardsAdapter;
+import waed.dev.ps.Adapters.PrisonerCardAdapter;
 import waed.dev.ps.Models.PrisonerCard;
-import waed.dev.ps.R;
 import waed.dev.ps.databinding.ActivityCardsBinding;
+import waed.dev.ps.firebase.controller.FirebaseController;
 
-public class CardsActivity extends AppCompatActivity {
+public class CardsActivity extends AppCompatActivity
+        implements PrisonerCardAdapter.PrisonersCardsListListener {
+
     private ActivityCardsBinding binding;
-    private PrisonersCardsAdapter adapter;
+
+    private FirebaseController firebaseController;
+    private PrisonerCardAdapter prisonerCardAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,16 +28,48 @@ public class CardsActivity extends AppCompatActivity {
         binding = ActivityCardsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        ArrayList<PrisonerCard> models = new ArrayList<>();
-        models.add(new PrisonerCard("1", R.drawable.temp_card_1, "محمد الحلبي", "30/12/2016", "Kill 5 terrorists", "Gaza, Palestine"));
-        models.add(new PrisonerCard("2", R.drawable.temp_card_2, "خضر عدنان", "30/12/2016", "Kill 5 terrorists", "Gaza, Palestine"));
-        models.add(new PrisonerCard("3", R.drawable.temp_card_3, "أحمد رزق الزهار", "30/12/2016", "Kill 5 terrorists", "Gaza, Palestine"));
-        models.add(new PrisonerCard("4", R.drawable.temp_card_4, "وليد دقة", "30/12/2016", "Kill 5 terrorists", "Gaza, Palestine"));
+        init();
+    }
 
-        adapter = new PrisonersCardsAdapter(models);
+    private void init() {
+        firebaseController = FirebaseController.getInstance();
+        setupPrisonerCardsAdapter();
+        getPrisonersCards();
+    }
+
+    private void setupPrisonerCardsAdapter() {
+        prisonerCardAdapter = new PrisonerCardAdapter(new ArrayList<>());
+        binding.prisonersCardsRecyclerView.setAdapter(prisonerCardAdapter);
         GridLayoutManager manager = new GridLayoutManager(this, 2);
         binding.prisonersCardsRecyclerView.setLayoutManager(manager);
-        binding.prisonersCardsRecyclerView.setAdapter(adapter);
         binding.prisonersCardsRecyclerView.setHasFixedSize(true);
+    }
+
+    private void updatePrisonersCardsAdapter(ArrayList<PrisonerCard> models) {
+        prisonerCardAdapter.setPrisonerCards(models);
+        prisonerCardAdapter.setNewsListCallback(this);
+    }
+
+    private void getPrisonersCards() {
+        binding.progressPrisonersCards.setVisibility(View.VISIBLE);
+        firebaseController.getPrisonersCards(new FirebaseController.GetPrisonerCardsCallback() {
+            @Override
+            public void onSuccess(ArrayList<PrisonerCard> prisonerCards) {
+                binding.progressPrisonersCards.setVisibility(View.GONE);
+                updatePrisonersCardsAdapter(prisonerCards);
+            }
+
+            @Override
+            public void onFailure(String errorMessage) {
+
+            }
+        });
+    }
+
+    @Override
+    public void onClickItemListener(PrisonerCard model) {
+        Intent intent = new Intent(getBaseContext(), PrisonerDetailsActivity.class);
+        intent.putExtra("model", model);
+        startActivity(intent);
     }
 }

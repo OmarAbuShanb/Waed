@@ -1,7 +1,6 @@
 package waed.dev.ps.Adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -11,14 +10,25 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import waed.dev.ps.Models.PrisonerCard;
-import waed.dev.ps.Screens.activities.PrisonerDetailsActivity;
+import waed.dev.ps.Utils.UtilsGeneral;
 import waed.dev.ps.databinding.PrisonerCardItemBinding;
 
-public class PrisonersCardsAdapter extends RecyclerView.Adapter<PrisonersCardsAdapter.viewHolder> {
-    ArrayList<PrisonerCard> prisonerCards;
+public class PrisonerCardAdapter extends RecyclerView.Adapter<PrisonerCardAdapter.viewHolder> {
+    private ArrayList<PrisonerCard> prisonerCards;
+    private PrisonersCardsListListener prisonersCardsListListener;
 
-    public PrisonersCardsAdapter(ArrayList<PrisonerCard> prisonerCards) {
+    public void setNewsListCallback(PrisonersCardsListListener prisonersCardsListListener) {
+        this.prisonersCardsListListener = prisonersCardsListListener;
+    }
+
+    public PrisonerCardAdapter(ArrayList<PrisonerCard> prisonerCards) {
         this.prisonerCards = prisonerCards;
+    }
+
+    public void setPrisonerCards(ArrayList<PrisonerCard> prisonerCards) {
+        this.prisonerCards = prisonerCards;
+//        notifyItemRangeInserted(0, prisonerCards.size() - 1);
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -33,7 +43,8 @@ public class PrisonersCardsAdapter extends RecyclerView.Adapter<PrisonersCardsAd
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
         PrisonerCard model = prisonerCards.get(position);
         holder.bind(model);
-//        holder.itemView.setOnClickListener = binding.getRoot().setOnClickListener
+
+        holder.setNewsListCallback(prisonersCardsListListener);
     }
 
     @Override
@@ -45,6 +56,12 @@ public class PrisonersCardsAdapter extends RecyclerView.Adapter<PrisonersCardsAd
         private final PrisonerCardItemBinding binding;
         private final Context context;
 
+        private PrisonersCardsListListener prisonersCardsListListener;
+
+        protected void setNewsListCallback(PrisonersCardsListListener prisonersCardsListListener) {
+            this.prisonersCardsListListener = prisonersCardsListListener;
+        }
+
         public viewHolder(@NonNull PrisonerCardItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
@@ -52,18 +69,18 @@ public class PrisonersCardsAdapter extends RecyclerView.Adapter<PrisonersCardsAd
         }
 
         void bind(PrisonerCard model) {
-            binding.prisonerImage.setImageResource(model.getImageUrl());
             binding.prisonerName.setText(model.getName());
 
-            binding.getRoot().setOnClickListener(v -> {
-                Intent details = new Intent(context, PrisonerDetailsActivity.class);
-                details.putExtra("prisoner_image", model.getImageUrl());
-                details.putExtra("prisoner_name", model.getName());
-                details.putExtra("prisoner_arrest_date", model.getDateOfArrest());
-                details.putExtra("prisoner_judgment", model.getJudgment());
-                details.putExtra("prisoner_living", model.getLiving());
-                context.startActivity(details);
-            });
+            UtilsGeneral.getInstance()
+                    .loadImage(context, model.getImageUrl())
+                    .into(binding.prisonerImage);
+
+            binding.prisonerCard.setOnClickListener(v ->
+                    prisonersCardsListListener.onClickItemListener(model));
         }
+    }
+
+    public interface PrisonersCardsListListener {
+        void onClickItemListener(PrisonerCard model);
     }
 }

@@ -7,7 +7,7 @@
     tools:context=".Screens.activities.DesignsActivity">
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/headContentName"
         style="@style/CustomAppBarStyle"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_54sdp"
@@ -23,6 +23,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/headContentName" />
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progressPrisonersPosters"
+        style="@style/CircularProgressStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headContentName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

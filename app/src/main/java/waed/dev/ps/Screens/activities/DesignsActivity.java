@@ -4,17 +4,20 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager2.widget.ViewPager2;
 
 import java.util.ArrayList;
 
-import waed.dev.ps.Adapters.PostersAdapter;
-import waed.dev.ps.R;
+import waed.dev.ps.Adapters.PrisonerPostersAdapter;
+import waed.dev.ps.Models.Poster;
 import waed.dev.ps.Utils.RotationPageTransformer;
 import waed.dev.ps.databinding.ActivityDesignsBinding;
+import waed.dev.ps.firebase.controller.FirebaseController;
 
 public class DesignsActivity extends AppCompatActivity {
     private ActivityDesignsBinding binding;
+
+    private FirebaseController firebaseController;
+    private PrisonerPostersAdapter prisonerPostersAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,14 +25,35 @@ public class DesignsActivity extends AppCompatActivity {
         binding = ActivityDesignsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        ArrayList<Integer> postersImage = new ArrayList<>();
-        postersImage.add(R.drawable.temp_poster_1);
-        postersImage.add(R.drawable.temp_poster_2);
-        postersImage.add(R.drawable.temp_poster_3);
-        postersImage.add(R.drawable.temp_poster_4);
+        init();
+    }
 
+    private void init() {
+        firebaseController = FirebaseController.getInstance();
+        setupPrisonerPostersAdapter();
+        getPosters();
+    }
+
+    private void setupPrisonerPostersAdapter() {
+        prisonerPostersAdapter = new PrisonerPostersAdapter(new ArrayList<>());
         binding.postersPager.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
         binding.postersPager.setPageTransformer(new RotationPageTransformer(160));
-        binding.postersPager.setAdapter(new PostersAdapter(postersImage));
+        binding.postersPager.setAdapter(prisonerPostersAdapter);
+    }
+
+    private void getPosters() {
+        binding.progressPrisonersPosters.setVisibility(View.VISIBLE);
+        firebaseController.getPosters(new FirebaseController.GetPostersCallback() {
+            @Override
+            public void onSuccess(ArrayList<Poster> posters) {
+                binding.progressPrisonersPosters.setVisibility(View.GONE);
+                prisonerPostersAdapter.setPosters(posters);
+            }
+
+            @Override
+            public void onFailure(String errorMessage) {
+
+            }
+        });
     }
 }

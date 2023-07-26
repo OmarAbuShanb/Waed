@@ -28,7 +28,8 @@ public class UtilsNotifications {
     ) {
         String NOT_CHANNEL_NAME = "notification messaging";
         long[] NOT_VIBRATION_PATTERN = {0, 120, 70, 150, 70, 600};
-        Bitmap defaultUserImage = getBitmapFromVectorDrawable(context, R.mipmap.ic_launcher_round);
+        Bitmap defaultUserImage
+                = getBitmapFromVectorDrawable(context, R.mipmap.ic_launcher_round);
 
         NotificationCompat.Builder notBuilder = new NotificationCompat.Builder(context, String.valueOf(notificationId))
                 .setContentTitle(title)

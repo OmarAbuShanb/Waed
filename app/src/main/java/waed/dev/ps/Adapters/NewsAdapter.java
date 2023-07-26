@@ -1,49 +1,50 @@
 package waed.dev.ps.Adapters;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityOptionsCompat;
-import androidx.core.util.Pair;
-import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 import waed.dev.ps.Models.News;
-import waed.dev.ps.Screens.activities.NewsDetails;
+import waed.dev.ps.Utils.UtilsGeneral;
 import waed.dev.ps.databinding.NewsItemBinding;
 
-public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.newsHolder> {
+public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder> {
     private ArrayList<News> news;
+
+    private NewsListListener newsListListener;
+
+    public void setNewsListCallback(NewsListListener newsListListener) {
+        this.newsListListener = newsListListener;
+    }
 
     public NewsAdapter(ArrayList<News> news) {
         this.news = news;
     }
 
-    /**
-     * This is used when the data comes from the server initially you should give the initial adapter an empty array
-     * */
     public void setNews(ArrayList<News> news) {
         this.news = news;
-        notifyItemInserted(news.size()); // todo check this out.
+        notifyItemRangeInserted(0, news.size());
     }
 
     @NonNull
     @Override
-    public newsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        NewsItemBinding binding = NewsItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-        return new newsHolder(binding);
+    public NewsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        NewsItemBinding binding =
+                NewsItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new NewsViewHolder(binding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull newsHolder holder, int position) {
+    public void onBindViewHolder(@NonNull NewsViewHolder holder, int position) {
         News model = news.get(position);
         holder.bind(model);
+
+        holder.setNewsListCallback(newsListListener);
     }
 
     @Override
@@ -51,11 +52,16 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.newsHolder> {
         return news.size();
     }
 
-    static class newsHolder extends RecyclerView.ViewHolder {
+    static class NewsViewHolder extends RecyclerView.ViewHolder {
         private final NewsItemBinding binding;
         private final Context context;
+        private NewsListListener newsListListener;
 
-        public newsHolder(@NonNull NewsItemBinding binding) {
+        protected void setNewsListCallback(NewsListListener newsListListener) {
+            this.newsListListener = newsListListener;
+        }
+
+        public NewsViewHolder(@NonNull NewsItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
             context = binding.getRoot().getContext();
@@ -63,26 +69,16 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.newsHolder> {
 
         void bind(News model) {
             binding.newsTitle.setText(model.getTitle());
-            binding.newsImage.setImageResource(model.getImageUrl());
 
-            binding.newsCard.setOnClickListener(v -> {
-                Intent details = setupIntent(model);
+            UtilsGeneral.getInstance()
+                    .loadImage(context, model.getImageUrl())
+                    .into(binding.ivNews);
 
-                Pair[] pairs = new Pair[1];
-                pairs[0] = new Pair<>(v, ViewCompat.getTransitionName(v));
-                ActivityOptionsCompat optionsCompat =
-                        ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context, pairs);
-                context.startActivity(details, optionsCompat.toBundle());
-            });
+            binding.buNewsCard.setOnClickListener(v -> newsListListener.onClickItemListener(model));
         }
+    }
 
-        @NonNull
-        private Intent setupIntent(News model) {
-            Intent details = new Intent(context, NewsDetails.class);
-            details.putExtra("news_image", model.getImageUrl());
-            details.putExtra("news_title", model.getTitle());
-            details.putExtra("news_details", model.getDetails());
-            return details;
-        }
+    public interface NewsListListener {
+        void onClickItemListener(News model);
     }
 }

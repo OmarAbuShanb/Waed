@@ -38,4 +38,10 @@
     <string name="search_page">Search</string>
     <string name="contact_us_page">Contact us</string>
     <string name="more_page">More</string>
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="aboutAppText">Work to support the issue of male and female prisoners in the prisons of the Israeli occupation in all fields and at all local, Arab and international levels by working hard and distinguished in order to highlight the issue of the male and female prisoners and their suffering caused by the darkness of the cells in a framework of transparency</string>
+    <string name="prisoners">Prisoners</string>
+    <string name="books">Books</string>
 </resources>

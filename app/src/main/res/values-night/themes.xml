@@ -10,5 +10,9 @@
     <style name="Theme.Waed.Posters" parent="Base.Theme.Waed">
         <item name="android:windowBackground">@color/app_color</item>
     </style>
+    <style name="ThemeOverlay.Waed.FullscreenContainer" parent="">
+        <item name="fullscreenBackgroundColor">@color/light_blue_900</item>
+        <item name="fullscreenTextColor">@color/light_blue_A400</item>
+    </style>
 
 </resources>
